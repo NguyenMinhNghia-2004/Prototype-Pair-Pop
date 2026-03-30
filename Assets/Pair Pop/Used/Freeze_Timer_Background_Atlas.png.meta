@@ -1,0 +1,695 @@
+fileFormatVersion: 2
+guid: 57bfef785711fde428cf103319bb75e5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_0
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 860
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49c73eb94ec7c0d4fbc83531b71e9d77
+      internalID: 1532899624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_1
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 860
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0622f77e7075a49b78e78486476e8b
+      internalID: 688656745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_2
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 860
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1d79604d0f4bc4a89f1735e9abbc83
+      internalID: -1784349268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 860
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fe5071904aecb45a710071335e7e32
+      internalID: 432750462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1ce92b988667846b00726f4bdce477
+      internalID: 11929952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_5
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 645
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13f0849e815110488abb4b5c9f27576
+      internalID: 1506473430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_6
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 645
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b6890e51d51b742977d56901d03841
+      internalID: -1359381699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_7
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 645
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421af4df46a47214f947ea8e0bd45722
+      internalID: 1971280787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_8
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 645
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844a27177ab2dc74bba9d312978d1ed5
+      internalID: -1910744607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 430
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6759d52b0cad34b80c66c23c9a0d18
+      internalID: 2083523908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_10
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 430
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1eb3861b54fef49bf9748b57df770d
+      internalID: -109157281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_11
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 430
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35062a2f3e8eff049a9404dec9ef99e7
+      internalID: -1891153899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_12
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 430
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcc3066290027b4499d1cdcdabd1939
+      internalID: -978662956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_13
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 430
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd97259dc0ba5444b83f6b1c79041b35
+      internalID: 87610843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 215
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28cab0b45c69482458e13f6d3316dc59
+      internalID: -1169805587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_15
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 215
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575bbe1fa33032541b2c323a100cb8ff
+      internalID: -914737945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_16
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 215
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55b62c5c498e9146bfae9c59d0183cb
+      internalID: 1676445012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_17
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 215
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdda4d6e61d265048b57f634b2787ba9
+      internalID: 1452401230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_18
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 215
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa75a5071bb2df478030f7b41673450
+      internalID: -244081750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd4e294292182843975de7962011445
+      internalID: -1667889868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_20
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 0
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd2d01b57645f24a899843ddec35e8d
+      internalID: 425415266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_21
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 0
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e1ad41d34e2ff4db89b23e602ae93a
+      internalID: -1239590380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_22
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 0
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc03a15a00492e48887a4c5f894f77c
+      internalID: -1964434734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freeze_Timer_Background_Atlas_23
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 0
+        width: 409
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7ff348b5bb6c145beaa4b107690a88
+      internalID: -1815087726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 48249f883d677094f97cfb6c28b98ab7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Freeze_Timer_Background_Atlas_0: 1532899624
+      Freeze_Timer_Background_Atlas_1: 688656745
+      Freeze_Timer_Background_Atlas_10: -109157281
+      Freeze_Timer_Background_Atlas_11: -1891153899
+      Freeze_Timer_Background_Atlas_12: -978662956
+      Freeze_Timer_Background_Atlas_13: 87610843
+      Freeze_Timer_Background_Atlas_14: -1169805587
+      Freeze_Timer_Background_Atlas_15: -914737945
+      Freeze_Timer_Background_Atlas_16: 1676445012
+      Freeze_Timer_Background_Atlas_17: 1452401230
+      Freeze_Timer_Background_Atlas_18: -244081750
+      Freeze_Timer_Background_Atlas_19: -1667889868
+      Freeze_Timer_Background_Atlas_2: -1784349268
+      Freeze_Timer_Background_Atlas_20: 425415266
+      Freeze_Timer_Background_Atlas_21: -1239590380
+      Freeze_Timer_Background_Atlas_22: -1964434734
+      Freeze_Timer_Background_Atlas_23: -1815087726
+      Freeze_Timer_Background_Atlas_3: 432750462
+      Freeze_Timer_Background_Atlas_4: 11929952
+      Freeze_Timer_Background_Atlas_5: 1506473430
+      Freeze_Timer_Background_Atlas_6: -1359381699
+      Freeze_Timer_Background_Atlas_7: 1971280787
+      Freeze_Timer_Background_Atlas_8: -1910744607
+      Freeze_Timer_Background_Atlas_9: 2083523908
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

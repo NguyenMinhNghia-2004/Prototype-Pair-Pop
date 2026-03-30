@@ -1,0 +1,971 @@
+fileFormatVersion: 2
+guid: acfc32e81ab7d4741ba13d5a5ff58538
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_0
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 719
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e8b1d026327e14fa39f84072fa85cf
+      internalID: -853410013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_1
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 716
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c03260619a7219e459eeb57ec8568035
+      internalID: 666974680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_2
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 481
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdacf84576d6e754f91932c50dee2b38
+      internalID: -161181429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_3
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 483
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239a4eded555b3c489ec5191f40fc5dc
+      internalID: -738711912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 248
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633cad8c5a99feb4a8b74c6cb850f043
+      internalID: 1095079770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_5
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 250
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 000253f9f6bd6ca4d9d35b7f505ae41e
+      internalID: -205905501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d844a8da0206de4a9dda70d0d35b57f
+      internalID: -357302878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_7
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7103a5718bb630745808648840d07617
+      internalID: -2122078898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd786175b7c93d48bfddb657020f2fe
+      internalID: 979400000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_9
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88edf1e12f69d2e43ae9771ee2fac0da
+      internalID: -444753261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_10
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0aa1edda24f9248871ad6cd8e576c2
+      internalID: -1292753333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_11
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 0
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca22ce65c28b314aa0355bcb2a3fb60
+      internalID: 1174839474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_12
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 240
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6715070b8df5142843d32ad8fe8ca1
+      internalID: 1637047814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_13
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 0
+        width: 181
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238e211d156329743b096adbf6e92f1e
+      internalID: 1365137491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_14
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 244
+        width: 181
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a0bf9e3db9acc45a8a515f7ed6be38
+      internalID: -301586200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_15
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 242
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520c54ec36da1234895872fa4dc9067c
+      internalID: -1089781938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_16
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 479
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823c45a233a2e7a409b5eb7cd99dfd85
+      internalID: 901753406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_17
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 716
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a62d22aec365b4b8482ec00b61d782
+      internalID: 1934748629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 493
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3627005501d2d704f80cfd7c131aa444
+      internalID: 301875045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_19
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 490
+        width: 181
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc83890f0a425c4bb2abeb01a90b85f
+      internalID: 883206651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 731
+        width: 190
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfea1e8569067046b6fc4c82d3c05f4
+      internalID: 1433650662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_21
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 249
+        width: 190
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5144bc93bc97a2439f857a42d98f06a
+      internalID: 2035481137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_22
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 452
+        width: 190
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ef422fbc4b230418057e23866c2f6f
+      internalID: -1611956564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_23
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 613
+        width: 190
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e59ed4982190c84dbf0b33aff4f2ac0
+      internalID: -1323779349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_24
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 0
+        width: 180
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8beffb5d6787fad488cd47cedeadbe35
+      internalID: -143609685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_25
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 0
+        width: 180
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb982b6b71c4a44187161f2f2129eea
+      internalID: -1023671174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_26
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 0
+        width: 190
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648575ab285bfb9499dbf8c96a390ffa
+      internalID: -628530585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_27
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 187
+        width: 180
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1b885b879b9534cbb624eb2b368d6a
+      internalID: -1702776064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_28
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 187
+        width: 186
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad1c5af247757249b9d59e2b77d0bdb
+      internalID: -1541593020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_29
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 431
+        width: 186
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e09b8d7a9d6ac4eb04718735e64d33
+      internalID: -2106496690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_30
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 195
+        width: 190
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5277b30040308164b8b918de1dccdcc7
+      internalID: 1468150259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_31
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 379
+        width: 186
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb77efbf399fce438d5286469539d1b
+      internalID: 807449753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_32
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 551
+        width: 159
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0783b98ebfde1f84ab243bfff8a73d42
+      internalID: -1591927938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_33
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 644
+        width: 190
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb68e0a4908122468c5c1114ebf1f79
+      internalID: -358878208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_34
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 222
+        width: 173
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ffb7641cbe58974c98699da3b8f3f0e
+      internalID: 911019803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_35
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 610
+        width: 131
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752963cda3222d940821f4fc285f941d
+      internalID: -845985029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: db41ff82bf15aa24cab6c57fa7e55a56
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_0: -853410013
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_1: 666974680
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_10: -1292753333
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_11: 1174839474
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_12: 1637047814
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_13: 1365137491
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_14: -301586200
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_15: -1089781938
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_16: 901753406
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_17: 1934748629
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_18: 301875045
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_19: 883206651
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_2: -161181429
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_20: 1433650662
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_21: 2035481137
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_22: -1611956564
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_23: -1323779349
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_24: -143609685
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_25: -1023671174
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_26: -628530585
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_27: -1702776064
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_28: -1541593020
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_29: -2106496690
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_3: -738711912
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_30: 1468150259
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_31: 807449753
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_32: -1591927938
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_33: -358878208
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_34: 911019803
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_35: -845985029
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_4: 1095079770
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_5: -205905501
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_6: -357302878
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_7: -2122078898
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_8: 979400000
+      sactx-0-2048x1024-ASTC 6x6-SpriteAtlas_Level_0035-536252f2_9: -444753261
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
