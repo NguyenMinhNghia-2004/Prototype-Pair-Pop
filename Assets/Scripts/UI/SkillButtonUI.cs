@@ -49,7 +49,7 @@ namespace PairPop.UI {
             if (_skill == null) return;
             
             _skill.Activate(board);
-            HapticManager.Instance?.Play(HapticType.Heavy);
+            HapticManager.Instance?.Play(HapticType.Medium);
             
             // Ngừng lắc
             // icon.transform.DOKill();

@@ -278,8 +278,10 @@ namespace PairPop.Gameplay {
 
                 // ROW DONE SEQUENCE
                 GameManager.Instance.AddScoreForDoneRow();
-                HapticManager.Instance?.Play(HapticType.Success);
-
+                HapticManager.Instance?.Play(HapticType.Heavy);
+                yield return new WaitForSeconds(0.05f);
+                HapticManager.Instance?.Play(HapticType.Medium);
+                
                 // === Bước 1: Lấy bộ màu theo thứ tự done ===
                 DoneColorSet colorSet = GetDoneColorSet(doneRowCount);
 

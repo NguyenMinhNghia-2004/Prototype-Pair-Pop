@@ -69,7 +69,7 @@ namespace PairPop.Gameplay {
             // Bring to front in UI
             transform.SetAsLastSibling();
 
-            HapticManager.Instance?.Play(HapticType.Light);
+            HapticManager.Instance?.Play(HapticType.Medium);
             
             // Thả ghost card tại đây
             board.ShowGhostCard(transform.position);
@@ -109,7 +109,7 @@ namespace PairPop.Gameplay {
             } else {
                 rectTransform.DOAnchorPos(originalAnchoredPos, 0.25f).SetEase(Ease.OutBack);
                 transform.DOScale(0.7f, 0.15f);
-                HapticManager.Instance?.Play(HapticType.Soft);
+                HapticManager.Instance?.Play(HapticType.Medium);
                 GameManager.Instance.ResetCombo();
             }
             
