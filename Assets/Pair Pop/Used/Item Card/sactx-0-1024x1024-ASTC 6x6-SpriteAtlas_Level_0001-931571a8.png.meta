@@ -321,50 +321,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_9
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 11
-        width: 175
-        height: 225
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c2a5b0da78743a4585cc196cc7e3307
-      internalID: -1652466431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_10
-      rect:
-        serializedVersion: 2
-        x: 383
-        y: 0
-        width: 175
-        height: 235
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 421944fb1f7d3db458ad62c5a23f74ef
-      internalID: 1966428416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_11
       rect:
         serializedVersion: 2

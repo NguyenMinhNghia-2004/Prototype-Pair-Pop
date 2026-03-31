@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using PairPop.Core;
+using DG.Tweening;
 
 namespace PairPop.UI {
     public class UIManager : MonoBehaviour {
@@ -38,8 +39,7 @@ namespace PairPop.UI {
         private void UpdateScore(int newScore) {
             scoreLabel.text = newScore.ToString();
             scoreLabel.rectTransform.localScale = Vector3.one * 1.5f;
-            scoreLabel.rectTransform.LeanScale(Vector3.one, 0.2f).setEaseOutBounce(); // Fallback nếu xài LeanTween, hoặc dùng DOTween ở dưới
-            // scoreLabel.rectTransform.DOScale(1f, 0.2f);
+            scoreLabel.rectTransform.DOScale(1f, 0.2f).SetEase(Ease.OutBounce);
         }
 
         private void UpdateTime(float time) {

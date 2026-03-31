@@ -10,7 +10,7 @@ namespace PairPop.Skills {
         public int cooldownTurns = 5;
         public float duration = 20f;
         
-        private int lastUsedDoneCount = -cooldownTurns;
+        private int lastUsedDoneCount = -999;
 
         public int UnlockLevel => unlockLevel;
         public int CooldownTurns => cooldownTurns;

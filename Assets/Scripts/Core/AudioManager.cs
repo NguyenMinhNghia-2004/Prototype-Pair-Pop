@@ -34,9 +34,10 @@ namespace PairPop.Core {
 
             soundDic = new Dictionary<string, SoundClip>();
             foreach (var s in sounds) {
-                soundDic[s.id] = s;
-                if(s.baseVolume == 0) s.baseVolume = 1f;
-                if(s.basePitch == 0) s.basePitch = 1f;
+                var copy = s;
+                if(copy.baseVolume == 0) copy.baseVolume = 1f;
+                if(copy.basePitch == 0) copy.basePitch = 1f;
+                soundDic[copy.id] = copy;
             }
         }
 

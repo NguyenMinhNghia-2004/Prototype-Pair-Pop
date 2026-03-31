@@ -17,7 +17,7 @@ namespace PairPop.Core {
             
             // Xử lý tạm thời sài Handheld.Vibrate của Unity. 
             // Nếu dùng NiceVibrations hoặc plugin khác, hãy thay thế logic ở đây.
-            #if UNITY_ANDROID || UNITY_IOS
+            #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
             Handheld.Vibrate();
             #endif
             

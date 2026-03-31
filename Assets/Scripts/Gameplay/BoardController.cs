@@ -26,61 +26,117 @@ namespace PairPop.Gameplay {
 
         private GameObject currentGhost;
         private CardController hoveredCard;
+        private Coroutine hideGhostRoutine;
+        private int doneRowCount = 0; // Số hàng đã done, dùng để xếp lên trên cùng
 
         private void Start() {
-            // Test
-            // StartBoard(GameManager.Instance.currentLevel);
+            GameManager.Instance.StartLevel(GameManager.Instance.currentLevel);
+            StartBoard(GameManager.Instance.currentLevel);
         }
 
         public void StartBoard(LevelDataSO level) {
             currentLevel = level;
             allCards.Clear();
             spawnPool.Clear();
+            doneRowCount = 0;
 
-            // Shuffle pool và xếp vào Queue
-            var groups = level.possibleGroups.OrderBy(x => Random.value).ToList();
+            var groups = level.possibleGroups.ToList();
             for (int i = 0; i < level.totalGroupCount; i++) {
                 spawnPool.Enqueue(groups[i % groups.Count]);
             }
 
-            // Sinh các hàng bắt đầu (activeGroupCount)
-            for (int i = 0; i < level.activeGroupCount; i++) {
-                SpawnRow(i);
-            }
+            SpawnRows(0, level.activeGroupCount);
         }
 
-        private void SpawnRow(int rowIdx) {
+        private void SpawnRows(int startRowIdx, int rowCount) {
             if (spawnPool.Count == 0) return;
-            GroupDataSO groupToSpawn = spawnPool.Dequeue();
 
-            List<int> colIndices = new List<int> { 0, 1, 2, 3 };
-            colIndices = colIndices.OrderBy(x => Random.value).ToList(); // Shuffle cột
+            int groupsToSpawnCount = Mathf.Min(rowCount, spawnPool.Count);
+            List<CardModel> cardsToSpawn = new List<CardModel>();
 
-            for (int c = 0; c < 4; c++) {
-                int rndCol = colIndices[c];
-                Vector3 targetPos = GetCellPosition(rowIdx, rndCol);
+            for (int i = 0; i < groupsToSpawnCount; i++) {
+                GroupDataSO groupToSpawn = spawnPool.Dequeue();
+                for (int c = 0; c < 4; c++) {
+                    cardsToSpawn.Add(new CardModel {
+                        group = groupToSpawn,
+                        spriteIndex = c,
+                        isDone = false,
+                        isInPool = false
+                    });
+                }
+            }
+
+            ShuffleCardsForSpawn(cardsToSpawn, groupsToSpawnCount);
+
+            int finalMaxRow = Mathf.Max(allCards.Count > 0 ? allCards.Max(c => c.model.row) : 0, startRowIdx + groupsToSpawnCount - 1);
+
+            int cardIndex = 0;
+            for (int r = 0; r < groupsToSpawnCount; r++) {
+                int rowIdx = startRowIdx + r;
+                for (int c = 0; c < 4; c++) {
+                    CardModel model = cardsToSpawn[cardIndex++];
+                    model.row = rowIdx;
+                    model.col = c;
+                    
+                    Vector2 targetPos = GetCellPosition(rowIdx, c, finalMaxRow);
+                    CardController cardObj = Instantiate(cardPrefab, this.transform);
+                    RectTransform rt = cardObj.GetComponent<RectTransform>();
+                    
+                    rt.anchoredPosition = new Vector2(800f, -400f); 
+                    
+                    cardObj.Init(model, this, model.group.sprites[model.spriteIndex]);
+                    allCards.Add(cardObj);
+
+                    rt.DOAnchorPos(targetPos, 0.4f).SetDelay((r * 0.15f) + (c * 0.05f)).SetEase(Ease.OutBack);
+                    cardObj.transform.localScale = Vector3.one * 0.7f;
+                }
+            }
+            // If the center shifted, we might want to reposition others, but let's see how it looks.
+        }
+
+
+        private void ShuffleCardsForSpawn(List<CardModel> cards, int rowCount) {
+            if (rowCount <= 1) return;
+            bool validShuffle = false;
+            int maxAttempts = 100;
+            int attempts = 0;
+            
+            while (!validShuffle && attempts < maxAttempts) {
+                for (int i = cards.Count - 1; i > 0; i--) {
+                    int j = Random.Range(0, i + 1);
+                    var temp = cards[i];
+                    cards[i] = cards[j];
+                    cards[j] = temp;
+                }
                 
-                CardModel model = new CardModel {
-                    group = groupToSpawn,
-                    spriteIndex = c,
-                    row = rowIdx,
-                    col = rndCol,
-                    isDone = false,
-                    isInPool = false
-                };
-
-                CardController cardObj = Instantiate(cardPrefab, new Vector3(8f, -4f, 0), Quaternion.identity, this.transform);
-                cardObj.Init(model, this, groupToSpawn.sprites[c]);
-                allCards.Add(cardObj);
-
-                // Animate chia bài
-                cardObj.transform.DOMove(targetPos, 0.4f).SetDelay((rowIdx * 0.15f) + (c * 0.05f)).SetEase(Ease.OutBack);
-                // cardObj.transform.DORotate xáo lật 3d tuỳ ý như prompt
+                validShuffle = true;
+                for (int r = 0; r < rowCount; r++) {
+                    string firstGroupName = cards[r * 4].group.groupName;
+                    bool allSame = true;
+                    for (int c = 1; c < 4; c++) {
+                        if (cards[r * 4 + c].group.groupName != firstGroupName) {
+                            allSame = false;
+                            break;
+                        }
+                    }
+                    if (allSame) {
+                        validShuffle = false;
+                        break;
+                    }
+                }
+                attempts++;
             }
         }
 
-        public Vector3 GetCellPosition(int row, int col) {
-            return new Vector3(startPoint.x + col * spacingX, startPoint.y - row * spacingY, 0);
+        public Vector2 GetCellPosition(int row, int col, int? forcedMaxRow = null) {
+            float totalWidth = (4 - 1) * spacingX;
+            float startX = startPoint.x - (totalWidth / 2f);
+
+            int maxRow = forcedMaxRow ?? (allCards.Count > 0 ? allCards.Max(c => c.model.row) : 0);
+            float totalHeight = maxRow * spacingY;
+            float startY = startPoint.y + (totalHeight / 2f);
+
+            return new Vector2(startX + col * spacingX, startY - row * spacingY);
         }
 
         public bool IsRowInteractable(int row) {
@@ -88,39 +144,69 @@ namespace PairPop.Gameplay {
             return true; 
         }
 
-        public void ShowGhostCard(Vector3 pos) {
+        public void ShowGhostCard(Vector3 worldPos) {
+            if (hideGhostRoutine != null) {
+                StopCoroutine(hideGhostRoutine);
+                hideGhostRoutine = null;
+            }
+
             if (currentGhost == null && ghostCardPrefab != null) {
-                currentGhost = Instantiate(ghostCardPrefab, pos, Quaternion.identity, this.transform);
+                currentGhost = Instantiate(ghostCardPrefab, this.transform);
             } else if (currentGhost != null) {
                 currentGhost.SetActive(true);
-                currentGhost.transform.position = pos;
+            }
+            if (currentGhost != null) {
+                currentGhost.transform.position = worldPos;
+                currentGhost.transform.SetAsFirstSibling();
             }
         }
 
         public void HideGhostCard() {
-            if (currentGhost != null) currentGhost.SetActive(false);
+            if (currentGhost != null && currentGhost.activeSelf) 
+            {
+                if (hideGhostRoutine != null) StopCoroutine(hideGhostRoutine);
+                hideGhostRoutine = StartCoroutine(HideGhostRoutine());
+            }
             if (hoveredCard != null) {
                 hoveredCard.HighlightHover(false);
                 hoveredCard = null;
             }
         }
 
-        public CardController GetCardAtMousePos(Vector3 mousePos) {
-            // Find nearby card within radius
-            float threshold = 1.5f;
+        private IEnumerator HideGhostRoutine() {
+            yield return new WaitForSeconds(0.3f);
+            if (currentGhost != null) currentGhost.SetActive(false);
+            hideGhostRoutine = null;
+        }
+
+        public CardController HoveredCard => hoveredCard;
+
+        public CardController GetClosestCard(Vector3 worldMousePos, CardController ignoreCard) {
+            CardController closest = null;
+            float minDistance = float.MaxValue;
+            // Tăng bán kính tìm target
+            float threshold = 2.0f; 
+
             foreach (var card in allCards) {
-                if (Vector3.Distance(card.transform.position, mousePos) < threshold) {
-                    return card;
+                if (card == ignoreCard) continue;
+                if (card.model.isDone) continue;
+
+                // Compare in world space for simplicity as we have worldMousePos
+                float dist = Vector3.Distance(card.transform.position, worldMousePos);
+
+                if (dist < minDistance && dist < threshold) {
+                    minDistance = dist;
+                    closest = card;
                 }
             }
-            return null;
+            return closest;
         }
 
         public void CheckHover(CardController draggedCard, Vector3 mousePos) {
-            CardController target = GetCardAtMousePos(mousePos);
+            CardController target = GetClosestCard(mousePos, draggedCard);
             if (target != hoveredCard) {
                 if (hoveredCard != null) hoveredCard.HighlightHover(false);
-                if (target != null && target != draggedCard && target.model.row == draggedCard.model.row) {
+                if (target != null) {
                     target.HighlightHover(true);
                 }
                 hoveredCard = target;
@@ -128,19 +214,32 @@ namespace PairPop.Gameplay {
         }
 
         public void SwapCards(CardController c1, CardController c2) {
+            // Đổi cột
             int tempCol = c1.model.col;
             c1.model.col = c2.model.col;
             c2.model.col = tempCol;
 
-            Vector3 pos1 = GetCellPosition(c1.model.row, c1.model.col);
-            Vector3 pos2 = GetCellPosition(c2.model.row, c2.model.col);
+            // Đổi hàng
+            int tempRow = c1.model.row;
+            c1.model.row = c2.model.row;
+            c2.model.row = tempRow;
 
-            c1.transform.DOMove(pos1, 0.2f).SetEase(Ease.InOutQuad);
-            c2.transform.DOMove(pos2, 0.2f).SetEase(Ease.InOutQuad);
-            c1.transform.DOScale(1f, 0.15f);
+            Vector2 pos1 = GetCellPosition(c1.model.row, c1.model.col);
+            Vector2 pos2 = GetCellPosition(c2.model.row, c2.model.col);
 
-            // Check math
+            c1.GetComponent<RectTransform>().DOAnchorPos(pos1, 0.25f).SetEase(Ease.OutQuad);
+            // Hiệu ứng văng (overshoot) cho thẻ target khi bị hút về
+            c2.GetComponent<RectTransform>().DOAnchorPos(pos2, 0.35f).SetEase(Ease.OutBack);
+            c1.transform.DOScale(0.7f, 0.15f);
+            
+            c1.UpdateSorting();
+            c2.UpdateSorting();
+
+            // Check match cho cả 2 hàng nếu quá trình đổi liên quan tới 2 hàng khác nhau
             StartCoroutine(CheckRowDoneRoutine(c1.model.row));
+            if (c1.model.row != c2.model.row) {
+                StartCoroutine(CheckRowDoneRoutine(c2.model.row));
+            }
         }
 
         private IEnumerator CheckRowDoneRoutine(int row) {
@@ -164,15 +263,39 @@ namespace PairPop.Gameplay {
                     // Flash
                     card.FlashBackground(card.model.group.accentColor, 0.2f);
                     // Scale stagger
-                    seq.Insert(i * 0.08f, card.transform.DOScale(1.25f, 0.15f).SetLoops(2, LoopType.Yoyo));
+                    seq.Insert(i * 0.08f, card.transform.DOScale(0.7f * 1.25f, 0.15f).SetLoops(2, LoopType.Yoyo));
                 }
 
                 yield return new WaitForSeconds(0.6f);
 
-                // Bay lên khay done
-                foreach (var card in rowCards) {
-                    card.transform.DOMove(doneTrayPos, 0.35f).SetEase(Ease.InBack);
-                    card.transform.DOScale(0.5f, 0.35f);
+                // === Đưa group done lên hàng trên cùng (theo thứ tự done) ===
+                int targetDoneRow = doneRowCount;
+                doneRowCount++;
+
+                // Gán row mới cho các lá bài done
+                for (int i = 0; i < rowCards.Count; i++) {
+                    rowCards[i].model.row = targetDoneRow;
+                    rowCards[i].model.col = i;
+                }
+
+                // === Đẩy các lá bài chưa done xuống dưới ===
+                ReassignNonDoneRows();
+
+                // === Tính lại tổng số hàng để căn giữa ===
+                int totalRows = allCards.Count > 0 ? allCards.Max(c => c.model.row) : 0;
+
+                // === Animate các lá bài done về vị trí hàng trên cùng ===
+                for (int i = 0; i < rowCards.Count; i++) {
+                    Vector2 donePos = GetCellPosition(rowCards[i].model.row, rowCards[i].model.col, totalRows);
+                    rowCards[i].GetComponent<RectTransform>().DOAnchorPos(donePos, 0.35f).SetEase(Ease.OutBack);
+                    rowCards[i].transform.DOScale(0.7f, 0.25f);
+                }
+
+                // === Animate các lá bài chưa done về vị trí mới ===
+                var nonDoneCards = allCards.Where(c => !c.model.isDone).ToList();
+                foreach (var card in nonDoneCards) {
+                    Vector2 newPos = GetCellPosition(card.model.row, card.model.col, totalRows);
+                    card.GetComponent<RectTransform>().DOAnchorPos(newPos, 0.35f).SetDelay(0.1f).SetEase(Ease.OutQuad);
                 }
 
                 // Check Spawn Rules
@@ -180,15 +303,37 @@ namespace PairPop.Gameplay {
             }
         }
 
+        /// <summary>
+        /// Gán lại row cho tất cả lá bài chưa done, bắt đầu từ hàng doneRowCount.
+        /// Giữ nguyên thứ tự tương đối (row cũ, col cũ).
+        /// </summary>
+        private void ReassignNonDoneRows() {
+            var nonDoneCards = allCards
+                .Where(c => !c.model.isDone)
+                .OrderBy(c => c.model.row)
+                .ThenBy(c => c.model.col)
+                .ToList();
+
+            int currentRow = doneRowCount;
+            int currentCol = 0;
+
+            foreach (var card in nonDoneCards) {
+                card.model.row = currentRow;
+                card.model.col = currentCol;
+                currentCol++;
+                if (currentCol >= 4) {
+                    currentCol = 0;
+                    currentRow++;
+                }
+            }
+        }
+
         private void CheckAndSpawnNewRow() {
             if (currentLevel.spawnRules == null) return;
             foreach (var rule in currentLevel.spawnRules) {
                 if (GameManager.Instance.doneCount == rule.afterDoneCount) {
-                    for (int i = 0; i < rule.spawnGroupCount; i++) {
-                        // Tìm max row index + 1
-                        int maxRow = allCards.Count > 0 ? allCards.Max(c => c.model.row) : 0;
-                        SpawnRow(maxRow + 1);
-                    }
+                    int maxRow = allCards.Count > 0 ? allCards.Max(c => c.model.row) : -1;
+                    SpawnRows(maxRow + 1, rule.spawnGroupCount);
                 }
             }
         }
