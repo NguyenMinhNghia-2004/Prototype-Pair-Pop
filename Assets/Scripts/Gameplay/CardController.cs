@@ -133,5 +133,14 @@ namespace PairPop.Gameplay {
         public void FlashBackground(Color color, float duration) {
             backgroundRenderer.DOColor(color, duration).SetLoops(2, LoopType.Yoyo);
         }
+
+        /// <summary>
+        /// Đổi sprite background khi done
+        /// </summary>
+        public void SetDoneBackground(Sprite doneSprite) {
+            if (doneSprite != null) {
+                backgroundRenderer.sprite = doneSprite;
+            }
+        }
     }
 }

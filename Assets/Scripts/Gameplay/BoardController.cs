@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using PairPop.Core;
 using PairPop.Data;
 using PairPop.Models;
@@ -8,10 +9,25 @@ using System.Linq;
 using DG.Tweening;
 
 namespace PairPop.Gameplay {
+
+    /// <summary>
+    /// Bộ sprite dùng khi done group, gán theo thứ tự done (done 1 = bộ 0, done 2 = bộ 1, ...)
+    /// </summary>
+    [System.Serializable]
+    public class DoneColorSet {
+        [Tooltip("Sprite CARD_BASE - thay vào background card khi done")]
+        public Sprite backCardSprite;
+        [Tooltip("Sprite NICE_SLICE_UI - thay vào BG Box của Done Box")]
+        public Sprite bgBoxSprite;
+        [Tooltip("Sprite Ribbon - thay vào Box Title của Done Box")]
+        public Sprite ribbonSprite;
+    }
+
     public class BoardController : MonoBehaviour {
         [Header("Prefabs")]
         public CardController cardPrefab;
         public GameObject ghostCardPrefab;
+        public DoneBoxController doneBoxPrefab;
 
         [Header("Position Configs")]
         public Vector2 startPoint;
@@ -19,8 +35,13 @@ namespace PairPop.Gameplay {
         public float spacingX = 2.2f;
         public float spacingY = 3.5f;
 
+        [Header("Done Sprite Palette")]
+        [Tooltip("Danh sách các bộ sprite (CARD_BASE, NICE_SLICE_UI, Ribbon), dùng theo thứ tự done. Vượt số lượng thì lặp lại.")]
+        public DoneColorSet[] doneColorSets;
+
         // Dữ liệu board hiện tại
         private List<CardController> allCards = new List<CardController>();
+        private List<DoneBoxController> doneBoxes = new List<DoneBoxController>();
         private LevelDataSO currentLevel;
         private Queue<GroupDataSO> spawnPool = new Queue<GroupDataSO>();
 
@@ -37,6 +58,7 @@ namespace PairPop.Gameplay {
         public void StartBoard(LevelDataSO level) {
             currentLevel = level;
             allCards.Clear();
+            doneBoxes.Clear();
             spawnPool.Clear();
             doneRowCount = 0;
 
@@ -252,51 +274,83 @@ namespace PairPop.Gameplay {
             bool isAllMatch = rowCards.All(c => c.model.group.groupName == gName);
 
             if (isAllMatch) {
+                GroupDataSO doneGroup = rowCards[0].model.group;
+
                 // ROW DONE SEQUENCE
                 GameManager.Instance.AddScoreForDoneRow();
                 HapticManager.Instance?.Play(HapticType.Success);
 
+                // === Bước 1: Lấy bộ màu theo thứ tự done ===
+                DoneColorSet colorSet = GetDoneColorSet(doneRowCount);
+
+                // === Bước 1b: Đổi background color cho từng card ===
                 Sequence seq = DOTween.Sequence();
                 for (int i = 0; i < 4; i++) {
                     var card = rowCards[i];
                     card.model.isDone = true;
-                    // Flash
-                    card.FlashBackground(card.model.group.accentColor, 0.2f);
-                    // Scale stagger
+                    
+                    // Đổi background sprite theo bộ done
+                    card.SetDoneBackground(colorSet.backCardSprite);
+                    
+                    // Scale stagger hiệu ứng done
                     seq.Insert(i * 0.08f, card.transform.DOScale(0.7f * 1.25f, 0.15f).SetLoops(2, LoopType.Yoyo));
                 }
 
                 yield return new WaitForSeconds(0.6f);
 
-                // === Đưa group done lên hàng trên cùng (theo thứ tự done) ===
+                // === Bước 2: Xác định vị trí done row ===
                 int targetDoneRow = doneRowCount;
                 doneRowCount++;
 
-                // Gán row mới cho các lá bài done
-                for (int i = 0; i < rowCards.Count; i++) {
-                    rowCards[i].model.row = targetDoneRow;
-                    rowCards[i].model.col = i;
-                }
-
-                // === Đẩy các lá bài chưa done xuống dưới ===
+                // === Bước 3: Đẩy các lá bài chưa done xuống dưới ===
                 ReassignNonDoneRows();
 
-                // === Tính lại tổng số hàng để căn giữa ===
-                int totalRows = allCards.Count > 0 ? allCards.Max(c => c.model.row) : 0;
+                // Tính lại tổng số hàng để căn giữa
+                int totalRowsForLayout = CalculateTotalRows();
 
-                // === Animate các lá bài done về vị trí hàng trên cùng ===
+                // === Bước 4: Thu nhỏ 4 lá bài rồi spawn DoneBox thay thế ===
+                Vector2 doneBoxPos = GetDoneBoxPosition(targetDoneRow, totalRowsForLayout);
+
+                // Animate 4 card co lại về trung tâm done box
                 for (int i = 0; i < rowCards.Count; i++) {
-                    Vector2 donePos = GetCellPosition(rowCards[i].model.row, rowCards[i].model.col, totalRows);
-                    rowCards[i].GetComponent<RectTransform>().DOAnchorPos(donePos, 0.35f).SetEase(Ease.OutBack);
-                    rowCards[i].transform.DOScale(0.7f, 0.25f);
+                    var card = rowCards[i];
+                    card.GetComponent<RectTransform>().DOAnchorPos(doneBoxPos, 0.3f)
+                        .SetEase(Ease.InBack);
+                    card.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack);
                 }
 
-                // === Animate các lá bài chưa done về vị trí mới ===
+                yield return new WaitForSeconds(0.35f);
+
+                // Xóa 4 card cũ khỏi list và destroy
+                foreach (var card in rowCards) {
+                    allCards.Remove(card);
+                    Destroy(card.gameObject);
+                }
+
+                // === Bước 5: Spawn DoneBox prefab ===
+                if (doneBoxPrefab != null) {
+                    DoneBoxController doneBox = Instantiate(doneBoxPrefab, this.transform);
+                    RectTransform boxRT = doneBox.GetComponent<RectTransform>();
+                    boxRT.anchoredPosition = doneBoxPos;
+
+                    doneBox.Init(doneGroup, colorSet.backCardSprite, colorSet.bgBoxSprite, colorSet.ribbonSprite);
+                    doneBox.PlayAppearAnimation();
+                    doneBoxes.Add(doneBox);
+
+                    // Đặt done box ở đúng vị trí sibling (trước các card chưa done)
+                    doneBox.transform.SetSiblingIndex(targetDoneRow);
+                }
+
+                // === Bước 6: Animate các lá bài chưa done về vị trí mới ===
                 var nonDoneCards = allCards.Where(c => !c.model.isDone).ToList();
                 foreach (var card in nonDoneCards) {
-                    Vector2 newPos = GetCellPosition(card.model.row, card.model.col, totalRows);
-                    card.GetComponent<RectTransform>().DOAnchorPos(newPos, 0.35f).SetDelay(0.1f).SetEase(Ease.OutQuad);
+                    Vector2 newPos = GetCellPosition(card.model.row, card.model.col, totalRowsForLayout);
+                    card.GetComponent<RectTransform>().DOAnchorPos(newPos, 0.35f)
+                        .SetDelay(0.1f).SetEase(Ease.OutQuad);
                 }
+
+                // Reposition existing done boxes too (vì maxRow có thể thay đổi)
+                RepositionDoneBoxes(totalRowsForLayout);
 
                 // Check Spawn Rules
                 CheckAndSpawnNewRow();
@@ -328,6 +382,36 @@ namespace PairPop.Gameplay {
             }
         }
 
+        /// <summary>
+        /// Tính tổng số hàng hiện tại (done boxes + non-done cards)
+        /// </summary>
+        private int CalculateTotalRows() {
+            int maxCardRow = allCards.Count > 0 
+                ? allCards.Where(c => !c.model.isDone).Select(c => c.model.row).DefaultIfEmpty(0).Max() 
+                : 0;
+            return Mathf.Max(maxCardRow, doneRowCount - 1);
+        }
+
+        /// <summary>
+        /// Lấy vị trí cho DoneBox (căn giữa theo hàng, chiếm toàn bộ chiều ngang)
+        /// </summary>
+        private Vector2 GetDoneBoxPosition(int doneRow, int totalRows) {
+            // DoneBox nằm ở giữa hàng (col trung bình = 1.5 ~ giữa 4 cột)
+            return GetCellPosition(doneRow, 1, totalRows) + new Vector2(spacingX * 0.5f, 0f);
+        }
+
+        /// <summary>
+        /// Cập nhật vị trí tất cả done boxes khi layout thay đổi
+        /// </summary>
+        private void RepositionDoneBoxes(int totalRows) {
+            for (int i = 0; i < doneBoxes.Count; i++) {
+                if (doneBoxes[i] == null) continue;
+                Vector2 pos = GetDoneBoxPosition(i, totalRows);
+                doneBoxes[i].GetComponent<RectTransform>()
+                    .DOAnchorPos(pos, 0.35f).SetEase(Ease.OutQuad);
+            }
+        }
+
         private void CheckAndSpawnNewRow() {
             if (currentLevel.spawnRules == null) return;
             foreach (var rule in currentLevel.spawnRules) {
@@ -340,6 +424,17 @@ namespace PairPop.Gameplay {
 
         public List<CardController> GetAllCards() {
             return allCards;
+        }
+
+        /// <summary>
+        /// Lấy bộ màu theo thứ tự done. Nếu vượt số lượng palette thì lặp lại.
+        /// </summary>
+        private DoneColorSet GetDoneColorSet(int doneIndex) {
+            if (doneColorSets == null || doneColorSets.Length == 0) {
+                // Fallback mặc định nếu chưa gán
+                return new DoneColorSet();
+            }
+            return doneColorSets[doneIndex % doneColorSets.Length];
         }
     }
 }

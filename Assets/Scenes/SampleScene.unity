@@ -188,10 +188,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 7609253788219666218, guid: baf69229da6c8f648842af1ec2f7dfa6, type: 3}
   ghostCardPrefab: {fileID: 4780470314996357872, guid: 9cbe41a495cfeb948b1a486cdf78e17a, type: 3}
+  doneBoxPrefab: {fileID: 6164049938400141240, guid: 44480c4a97704d34682ed64a38092bf1, type: 3}
   startPoint: {x: 0, y: 0}
   doneTrayPos: {x: 0, y: 0}
   spacingX: 180
   spacingY: 220
+  doneColorSets:
+  - backCardSprite: {fileID: 21300000, guid: 0c9081bbb40fe684dbe1cebbecfaf1e8, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: f24980f72fa1d5147867361c93aae699, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 919c252e032a73e4d8d6c3165da2853a, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 3e363d621e419a545af1eb641b98f649, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: c58e1ad09677cd74fb516452cef30ea6, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 1521e47f2df0cad45800cedcc6f21e7b, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 389c4c1f2db938c4aa32d5bcac78e28f, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: f59797d262b014a4b87f3f196f1082ce, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 0e47229f5d8b2ea4e890f7f2891c840c, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 7e7c9acda82b2a5469f9d0c3ca0719ba, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: bd920bfdd101cf74a8b931cce561bc80, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 73ebddda9c0a2ab488426fa925f38549, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 964b418f76e3e6f44b3963090e0de1d4, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 710d3ffb2ffdec144ac60c133644f135, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 3aae81ad94fea874e9a7771ba3be578d, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 352224a12dc716440888c0423aeb4811, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: fa766402245291341aefef2f0a5a07e8, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 61ad9d9655d08a34e803c172a9344d32, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 84d7324464db03542955424c734a4dc2, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 751e41198225db346ab5cdf93437633c, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: e6b018ea960ce1346a7ad239962db0f8, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 84d7324464db03542955424c734a4dc2, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 751e41198225db346ab5cdf93437633c, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: e6b018ea960ce1346a7ad239962db0f8, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 54ff32a4f965c944c97d7a13180a7d2d, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 4baa50d2eda476846b91fe7607694e85, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 6831908c19e5c3b408173a0f9885e1a6, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 54ff32a4f965c944c97d7a13180a7d2d, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 4baa50d2eda476846b91fe7607694e85, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 6831908c19e5c3b408173a0f9885e1a6, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 54ff32a4f965c944c97d7a13180a7d2d, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 4baa50d2eda476846b91fe7607694e85, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 6831908c19e5c3b408173a0f9885e1a6, type: 3}
+  - backCardSprite: {fileID: 21300000, guid: 54ff32a4f965c944c97d7a13180a7d2d, type: 3}
+    bgBoxSprite: {fileID: 21300000, guid: 4baa50d2eda476846b91fe7607694e85, type: 3}
+    ribbonSprite: {fileID: 21300000, guid: 6831908c19e5c3b408173a0f9885e1a6, type: 3}
 --- !u!224 &39067819
 RectTransform:
   m_ObjectHideFlags: 0
