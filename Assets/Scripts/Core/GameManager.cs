@@ -1,6 +1,7 @@
 using UnityEngine;
 using PairPop.Data;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace PairPop.Core {
     public class GameManager : MonoBehaviour {
@@ -19,11 +20,17 @@ namespace PairPop.Core {
         public Action<int> OnScoreChanged;
         public Action<float> OnComboChanged;
         public Action<float> OnTimeChanged;
+        public Action<int, int> OnProgressChanged; // done/total
         public Action OnLevelComplete;
+
+        [Header("UI Panel")]
+        public GameObject pausePanel;
+        public GameObject levelCompletePanel;
+        public GameObject gameOverPanel;
 
         private void Awake() {
             if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            else DontDestroyOnLoad(gameObject);
         }
 
         public void StartLevel(LevelDataSO level) {
@@ -39,6 +46,7 @@ namespace PairPop.Core {
             OnScoreChanged?.Invoke(score);
             OnComboChanged?.Invoke(comboMultiplier);
             OnTimeChanged?.Invoke(currentTime);
+            OnProgressChanged?.Invoke(doneCount, currentLevel.totalGroupCount);
         }
 
         private void Update() {
@@ -66,6 +74,7 @@ namespace PairPop.Core {
             IncreaseCombo();
 
             OnScoreChanged?.Invoke(score);
+            OnProgressChanged?.Invoke(doneCount, currentLevel.totalGroupCount);
 
             if (doneCount >= currentLevel.totalGroupCount) {
                 isPlaying = false;
@@ -87,5 +96,39 @@ namespace PairPop.Core {
             comboMultiplier = 1f;
             OnComboChanged?.Invoke(comboMultiplier);
         }
+
+        #region UI Operations
+        public void TogglePause() {
+            pausePanel.SetActive(true);
+            isPlaying = false;
+        }
+
+        public void Resume() {
+            pausePanel.SetActive(false);
+            isPlaying = true;
+        }
+
+        public void ToggleSound() {
+            if(AudioManager.Instance != null) {
+                AudioManager.Instance.ToggleSFX();
+            }
+        }
+
+        public void ToggleMusic() {
+            if(AudioManager.Instance != null) {
+                AudioManager.Instance.ToggleMusic();
+            }
+        }
+
+        public void ToggleVibration() {
+            if(HapticManager.Instance != null) {
+                HapticManager.Instance.isEnabled = !HapticManager.Instance.isEnabled;
+            }
+        }
+
+        public void Replay() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        #endregion
     }
 }

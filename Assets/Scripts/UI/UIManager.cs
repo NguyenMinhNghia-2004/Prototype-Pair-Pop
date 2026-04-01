@@ -7,70 +7,173 @@ using DG.Tweening;
 namespace PairPop.UI {
     public class UIManager : MonoBehaviour {
         [Header("Top Bar")]
-        public TextMeshProUGUI scoreLabel;
         public TextMeshProUGUI levelLabel;
         
-        [Header("Timer Bar")]
-        public GameObject timerContainer;
-        public Image timerFill;
+        [Header("Progress Bar")]
+        public TextMeshProUGUI progressLabel; // "10/15"
+        public Image progressFill;
+        public RectTransform progressIcon; // Kéo thả icon (image bên cạnh thanh) vào đây
+        public ParticleSystem textParticles1; // Kéo thả Particle System của Text vào đây
+        public ParticleSystem textParticles2; // Kéo thả Particle System của Text vào đây
+
+
+        
+        [Header("Timer")]
         public TextMeshProUGUI timerLabel;
 
-        [Header("Combo Effect")]
-        public GameObject comboPopupPrefab; // Popup hiện x2, x3...
-        public Canvas mainCanvas;
+        [Header("Panels")]
+        public GameObject settingsPanel;
+
+        [Header("Settings Buttons")]
+        public Image musicBtnImg;
+        public Image soundBtnImg;
+        public Image vibrationBtnImg;
 
         private GameManager gm;
-        private float initialTime;
+        private bool levelNameSet = false;
 
+        private void Awake() {
+            textParticles1.Stop();
+            textParticles2.Stop();
+        }
         private void Start() {
             gm = GameManager.Instance;
-            gm.OnScoreChanged += UpdateScore;
-            gm.OnTimeChanged += UpdateTime;
-            gm.OnComboChanged += UpdateCombo;
-            gm.OnLevelComplete += ShowLevelComplete;
+            if (gm != null) {
+                gm.OnTimeChanged += UpdateTime;
+                gm.OnProgressChanged += UpdateProgress;
 
-            if (gm.currentLevel != null) {
-                levelLabel.text = "LEVEL " + (gm.currentLevel.name); // Tên ví dụ
-                initialTime = gm.currentLevel.timeLimit;
-                timerContainer.SetActive(initialTime > 0);
+                if (gm.currentLevel != null) {
+                    levelLabel.text = "Level " + gm.currentLevel.name;
+                    levelNameSet = true;
+                    // Initialize progress at start if possible
+                    UpdateProgress(gm.doneCount, gm.currentLevel.totalGroupCount);
+                }
             }
-        }
-
-        private void UpdateScore(int newScore) {
-            scoreLabel.text = newScore.ToString();
-            scoreLabel.rectTransform.localScale = Vector3.one * 1.5f;
-            scoreLabel.rectTransform.DOScale(1f, 0.2f).SetEase(Ease.OutBounce);
+            UpdateSettingsUI();
         }
 
         private void UpdateTime(float time) {
-            if (initialTime > 0) {
-                timerLabel.text = Mathf.CeilToInt(time).ToString() + "s";
-                timerFill.fillAmount = time / initialTime;
+            if (!levelNameSet && gm != null && gm.currentLevel != null && levelLabel != null) {
+                levelLabel.text = "Level " + gm.currentLevel.name;
+                levelNameSet = true;
+            }
+
+            if (timerLabel != null) {
+                int minutes = Mathf.FloorToInt(Mathf.Max(0, time) / 60f);
+                int seconds = Mathf.FloorToInt(Mathf.Max(0, time) % 60f);
+                timerLabel.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
         }
 
-        private void UpdateCombo(float mult) {
-            if (mult > 1f) {
-                // Tạo popup combo giữa màn hình 
-                if (comboPopupPrefab != null) {
-                    GameObject go = Instantiate(comboPopupPrefab, mainCanvas.transform);
-                    var text = go.GetComponentInChildren<TextMeshProUGUI>();
-                    if (text != null) text.text = "COMBO x" + ((mult - 1) * 2 + 1) + "!"; 
-                    Destroy(go, 1.5f);
+        private int lastDone = -1;
+
+        private void UpdateProgress(int done, int total) {
+            float delay = (lastDone >= 0 && done > lastDone) ? 0.6f : 0f;
+
+            if (progressFill != null && total > 0) {
+                float progress = (float)done / total;
+                RectTransform rt = progressFill.rectTransform;
+                
+                rt.DOKill(); // Ngắt animation cũ (nếu có)
+                rt.DOAnchorPosX(Mathf.Lerp(0f, 95f, progress), 0.35f).SetEase(Ease.OutQuad).SetDelay(delay);
+                rt.DOSizeDelta(new Vector2(Mathf.Lerp(0f, 195f, progress), rt.sizeDelta.y), 0.35f).SetEase(Ease.OutQuad).SetDelay(delay);
+            }
+
+            // Hiệu ứng nhảy khi nhóm bài hoàn thành
+            if (done > 0 && done > lastDone) {
+                if (lastDone >= 0) {
+                    // Delay toàn bộ hiệu ứng done để khớp animation bài bay về
+                    DOVirtual.DelayedCall(0.6f, () => {
+                        if (this == null) return; // Đề phòng object bị huỷ giữa chừng
+                        
+                        if (progressLabel != null) {
+                            progressLabel.text = $"{done}/{total}";
+                            progressLabel.rectTransform.DOKill(true);
+                            progressLabel.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.35f, 5, 0.5f);
+                        }
+                        
+                        if (progressIcon != null) {
+                            progressIcon.DOKill(true);
+                            progressIcon.DOPunchScale(Vector3.one * 0.25f, 0.4f, 6, 0.5f);
+                            progressIcon.DOPunchRotation(new Vector3(0, 0, 15f), 0.4f, 6, 0.5f);
+                        }
+                        
+                        if (textParticles1 != null && textParticles2 != null) {
+                            textParticles1.Stop(); 
+                            textParticles1.Play();
+                            textParticles2.Stop(); 
+                            textParticles2.Play();
+                        }
+                    });
+                }
+            } else {
+                // Update ngay lập tức lúc mới vào level
+                if (progressLabel != null) {
+                    progressLabel.text = $"{done}/{total}";
+                }
+            }
+            lastDone = done;
+        }
+
+        #region Buttons and Toggles
+
+        public void ToggleSettingsPanel() {
+            if (settingsPanel != null) {
+                bool isActive = !settingsPanel.activeSelf;
+                settingsPanel.SetActive(isActive);
+                if (isActive) {
+                    UpdateSettingsUI();
                 }
             }
         }
 
-        private void ShowLevelComplete() {
-            Debug.Log("[UIManager] HIỆN BẢNG THẮNG TRẬN - DONE!");
+        private void UpdateSettingsUI() {
+            if (AudioManager.Instance != null) {
+                if (musicBtnImg != null) musicBtnImg.color = AudioManager.Instance.isMusicEnabled ? Color.white : Color.gray;
+                if (soundBtnImg != null) soundBtnImg.color = AudioManager.Instance.isSFXEnabled ? Color.white : Color.gray;
+            }
+            if (HapticManager.Instance != null && vibrationBtnImg != null) {
+                vibrationBtnImg.color = HapticManager.Instance.isEnabled ? Color.white : Color.gray;
+            }
         }
+
+        public void ToggleMusic() {
+            if (gm != null) {
+                gm.ToggleMusic();
+                UpdateSettingsUI();
+            }
+            else Debug.LogError("GameManager is null");
+        }
+
+        public void ToggleSound() {
+            if (gm != null) {
+                gm.ToggleSound();
+                UpdateSettingsUI();
+            }
+             else Debug.LogError("GameManager is null");
+        }
+
+        public void ToggleVibration() {
+            if (gm != null) {
+                gm.ToggleVibration();
+                UpdateSettingsUI();
+            }
+             else Debug.LogError("GameManager is null");
+        }
+
+        public void Replay() {
+            if (gm != null) {
+                gm.Replay();
+            }
+             else Debug.LogError("GameManager is null");
+        }
+
+        #endregion
 
         private void OnDestroy() {
             if (gm != null) {
-                gm.OnScoreChanged -= UpdateScore;
                 gm.OnTimeChanged -= UpdateTime;
-                gm.OnComboChanged -= UpdateCombo;
-                gm.OnLevelComplete -= ShowLevelComplete;
+                gm.OnProgressChanged -= UpdateProgress;
             }
         }
     }
