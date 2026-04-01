@@ -28,6 +28,7 @@ namespace PairPop.Gameplay {
         public CardController cardPrefab;
         public GameObject ghostCardPrefab;
         public DoneBoxController doneBoxPrefab;
+        public GameObject doneParticlePrefab;
 
         [Header("Position Configs")]
         public Vector2 startPoint;
@@ -72,7 +73,7 @@ namespace PairPop.Gameplay {
 
         private void SpawnRows(int startRowIdx, int rowCount) {
             if (spawnPool.Count == 0) return;
-
+            AudioManager.Instance.PlaySFX("Shuffle");
             int groupsToSpawnCount = Mathf.Min(rowCount, spawnPool.Count);
             List<CardModel> cardsToSpawn = new List<CardModel>();
 
@@ -328,7 +329,7 @@ namespace PairPop.Gameplay {
                     allCards.Remove(card);
                     Destroy(card.gameObject);
                 }
-
+                AudioManager.Instance.PlaySFX("Match");
                 // === Bước 5: Spawn DoneBox prefab ===
                 if (doneBoxPrefab != null) {
                     DoneBoxController doneBox = Instantiate(doneBoxPrefab, this.transform);
@@ -341,6 +342,17 @@ namespace PairPop.Gameplay {
 
                     // Đặt done box ở đúng vị trí sibling (trước các card chưa done)
                     doneBox.transform.SetSiblingIndex(targetDoneRow);
+
+                    if (doneParticlePrefab != null) {
+                        GameObject particle = Instantiate(doneParticlePrefab, this.transform);
+                        RectTransform particleRT = particle.GetComponent<RectTransform>();
+                        if (particleRT != null) {
+                            particleRT.anchoredPosition = doneBoxPos;
+                        } else {
+                            particle.transform.position = doneBox.transform.position;
+                        }
+                        Destroy(particle, 5f);
+                    }
                 }
 
                 // === Bước 6: Animate các lá bài chưa done về vị trí mới ===

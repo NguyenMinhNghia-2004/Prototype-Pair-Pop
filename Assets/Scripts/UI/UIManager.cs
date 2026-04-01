@@ -6,6 +6,8 @@ using DG.Tweening;
 
 namespace PairPop.UI {
     public class UIManager : MonoBehaviour {
+        public static UIManager Instance { get; private set; }
+
         [Header("Top Bar")]
         public TextMeshProUGUI levelLabel;
         
@@ -23,6 +25,9 @@ namespace PairPop.UI {
 
         [Header("Panels")]
         public GameObject settingsPanel;
+        public GameObject winPanel;
+        public GameObject losePanel;
+        public GameObject pausePanel;
 
         [Header("Settings Buttons")]
         public Image musicBtnImg;
@@ -33,8 +38,14 @@ namespace PairPop.UI {
         private bool levelNameSet = false;
 
         private void Awake() {
-            textParticles1.Stop();
-            textParticles2.Stop();
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+
+            if (textParticles1 != null) textParticles1.Stop();
+            if (textParticles2 != null) textParticles2.Stop();
         }
         private void Start() {
             gm = GameManager.Instance;
@@ -43,7 +54,7 @@ namespace PairPop.UI {
                 gm.OnProgressChanged += UpdateProgress;
 
                 if (gm.currentLevel != null) {
-                    levelLabel.text = "Level " + gm.currentLevel.name;
+                    levelLabel.text = "Level " + (GameManager.currentLevelIndex + 1);
                     levelNameSet = true;
                     // Initialize progress at start if possible
                     UpdateProgress(gm.doneCount, gm.currentLevel.totalGroupCount);
@@ -54,7 +65,7 @@ namespace PairPop.UI {
 
         private void UpdateTime(float time) {
             if (!levelNameSet && gm != null && gm.currentLevel != null && levelLabel != null) {
-                levelLabel.text = "Level " + gm.currentLevel.name;
+                levelLabel.text = "Level " + (GameManager.currentLevelIndex + 1);
                 levelNameSet = true;
             }
 
@@ -116,6 +127,30 @@ namespace PairPop.UI {
         }
 
         #region Buttons and Toggles
+
+        public void ShowWinPanel() {
+            if (winPanel != null) winPanel.SetActive(true);
+        }
+
+        public void ShowLosePanel() {
+            if (losePanel != null) losePanel.SetActive(true);
+        }
+
+        public void NextLevelBtn() {
+            if (gm != null) {
+                gm.NextLevel();
+            }
+        }
+        
+        public void TogglePause() {
+            if (pausePanel != null) {
+                bool isActive = !pausePanel.activeSelf;
+                pausePanel.SetActive(isActive);
+                if (gm != null) {
+                    gm.isPlaying = !isActive;
+                }
+            }
+        }
 
         public void ToggleSettingsPanel() {
             if (settingsPanel != null) {

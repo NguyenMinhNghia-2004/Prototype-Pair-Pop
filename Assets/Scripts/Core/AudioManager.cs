@@ -43,6 +43,7 @@ namespace PairPop.Core {
                 if(copy.basePitch == 0) copy.basePitch = 1f;
                 soundDic[copy.id] = copy;
             }
+            PlayMusic("BGM");
         }
 
         public void PlayMusic(string id) {

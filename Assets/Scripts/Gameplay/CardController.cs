@@ -45,7 +45,7 @@ namespace PairPop.Gameplay {
         public void OnPointerDown(PointerEventData eventData) {
             if (model.isDone || !GameManager.Instance.isPlaying) return;
             if (!board.IsRowInteractable(model.row)) return;
-
+            AudioManager.Instance.PlaySFX("Select");
             isDragging = true;
             originalAnchoredPos = rectTransform.anchoredPosition;
             
@@ -94,7 +94,7 @@ namespace PairPop.Gameplay {
         public void OnPointerUp(PointerEventData eventData) {
             if (!isDragging) return;
             isDragging = false;
-            
+            AudioManager.Instance.PlaySFX("Drop");
             wobbleTween?.Kill();
             transform.DORotate(Vector3.zero, 0.15f);
             

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c407a4d5eb8be9848b6998c7ba8b3dd6, type: 3}
-  m_Name: 1
+  m_Name: 2
   m_EditorClassIdentifier: 
   columnCount: 4
-  rowCount: 3
-  totalGroupCount: 3
-  activeGroupCount: 3
+  rowCount: 4
+  totalGroupCount: 4
+  activeGroupCount: 4
   timeLimit: 600
   spawnRules: []
   possibleGroups:

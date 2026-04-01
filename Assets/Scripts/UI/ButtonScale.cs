@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using PairPop.Core;
 
 public class ButtonScale : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -34,6 +35,8 @@ public class ButtonScale : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        AudioManager.Instance.PlaySFX("Click");
+        HapticManager.Instance.Play(HapticType.Light);
         transform.DOScale(clickScale * baseScale, duration);
     }
 

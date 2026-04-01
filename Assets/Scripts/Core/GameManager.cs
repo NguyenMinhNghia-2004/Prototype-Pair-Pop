@@ -2,12 +2,22 @@ using UnityEngine;
 using PairPop.Data;
 using System;
 using UnityEngine.SceneManagement;
+using PairPop.UI;
+using System.Collections;
 
 namespace PairPop.Core {
     public class GameManager : MonoBehaviour {
         public static GameManager Instance { get; private set; }
 
+        [Header("Levels Setup")]
+        public LevelDataSO[] levels;
+        public static int currentLevelIndex = 0;
+
+        [HideInInspector]
         public LevelDataSO currentLevel;
+        
+        [Header("Effects")]
+        public ParticleSystem[] winParticles;
         
         [Header("State")]
         public bool isPlaying;
@@ -20,17 +30,24 @@ namespace PairPop.Core {
         public Action<int> OnScoreChanged;
         public Action<float> OnComboChanged;
         public Action<float> OnTimeChanged;
-        public Action<int, int> OnProgressChanged; // done/total
-        public Action OnLevelComplete;
-
-        [Header("UI Panel")]
-        public GameObject pausePanel;
-        public GameObject levelCompletePanel;
-        public GameObject gameOverPanel;
+        public Action<int, int> OnProgressChanged; 
 
         private void Awake() {
-            if (Instance == null) Instance = this;
-            else DontDestroyOnLoad(gameObject);
+            if (Instance != null && Instance != this) {
+                Destroy(this.gameObject);
+                return;
+            }
+            Instance = this;
+
+            if (levels != null && levels.Length > 0) {
+                currentLevel = levels[currentLevelIndex % levels.Length];
+            }
+
+             if (winParticles != null) {
+                foreach (var p in winParticles) {
+                    if (p != null) p.Stop();
+                }
+            }
         }
 
         public void StartLevel(LevelDataSO level) {
@@ -50,18 +67,23 @@ namespace PairPop.Core {
         }
 
         private void Update() {
-            // Có thể dùng một biến global dạng IsTimeFrozen từ SkillFrozen
             if (!isPlaying) return;
 
             // Xử lý Time limit
-            if (currentLevel.timeLimit > 0) {
+            if (currentLevel != null && currentLevel.timeLimit > 0) {
                 currentTime -= Time.deltaTime;
                 OnTimeChanged?.Invoke(currentTime);
                 if (currentTime <= 0) {
-                    isPlaying = false;
-                    Debug.Log("Time's up! Level Failed.");
-                    // Xử lý game over ở đây
+                    LoseGame();
                 }
+            }
+        }
+
+        private void LoseGame() {
+            isPlaying = false;
+            Debug.Log("Time's up! Level Failed.");
+            if (UIManager.Instance != null) {
+                UIManager.Instance.ShowLosePanel();
             }
         }
 
@@ -77,9 +99,26 @@ namespace PairPop.Core {
             OnProgressChanged?.Invoke(doneCount, currentLevel.totalGroupCount);
 
             if (doneCount >= currentLevel.totalGroupCount) {
-                isPlaying = false;
-                OnLevelComplete?.Invoke();
-                Debug.Log("LEVEL COMPLETE!");
+                StartCoroutine(WinGame());
+            }
+        }
+        IEnumerator WinGame() {
+            isPlaying = false;
+            Debug.Log("LEVEL COMPLETE!");
+            yield return new WaitForSeconds(0.75f);
+            // Xử lý bật effect particles
+            if (winParticles != null) {
+                foreach (var p in winParticles) {
+                    if (p != null) p.Play();
+                }
+            }
+
+            if (UIManager.Instance != null) {
+                yield return new WaitForSeconds(1.8f);
+                UIManager.Instance.ShowWinPanel();
+                foreach (var p in winParticles) {
+                    if (p != null) p.Stop();
+                }
             }
         }
 
@@ -97,15 +136,10 @@ namespace PairPop.Core {
             OnComboChanged?.Invoke(comboMultiplier);
         }
 
-        #region UI Operations
-        public void TogglePause() {
-            pausePanel.SetActive(true);
-            isPlaying = false;
-        }
-
-        public void Resume() {
-            pausePanel.SetActive(false);
-            isPlaying = true;
+        #region UI Operations & Core Flow
+        public void NextLevel() {
+            currentLevelIndex++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void ToggleSound() {
