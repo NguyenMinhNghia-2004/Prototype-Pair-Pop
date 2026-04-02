@@ -129,9 +129,9 @@ TextureImporter:
         x: 1
         y: 656
         width: 162
-        height: 217
+        height: 214
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,9 +151,9 @@ TextureImporter:
         x: 171
         y: 656
         width: 180
-        height: 217
+        height: 222
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,9 +173,9 @@ TextureImporter:
         x: 358
         y: 650
         width: 180
-        height: 217
+        height: 221
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,9 +195,9 @@ TextureImporter:
         x: 564
         y: 647
         width: 180
-        height: 217
+        height: 207
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,11 +215,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 751
-        y: 649
-        width: 180
-        height: 217
+        y: 647
+        width: 183
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_5
       rect:
         serializedVersion: 2
-        x: 183
+        x: 181
         y: 447
-        width: 162
-        height: 217
+        width: 170
+        height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -260,10 +260,10 @@ TextureImporter:
         serializedVersion: 2
         x: 567
         y: 450
-        width: 162
+        width: 178
         height: 197
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -280,12 +280,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_7
       rect:
         serializedVersion: 2
-        x: 390
-        y: 442
-        width: 162
-        height: 212
+        x: 382
+        y: 441
+        width: 180
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,11 +303,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 752
-        y: 446
+        y: 443
         width: 180
-        height: 197
+        height: 203
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,11 +325,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 454
+        y: 445
         width: 180
-        height: 197
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_10
       rect:
         serializedVersion: 2
-        x: 395
-        y: 225
-        width: 162
-        height: 212
+        x: 386
+        y: 217
+        width: 182
+        height: 220
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -368,12 +368,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_11
       rect:
         serializedVersion: 2
-        x: 206
-        y: 227
-        width: 162
-        height: 212
+        x: 194
+        y: 224
+        width: 186
+        height: 215
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -390,12 +390,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_12
       rect:
         serializedVersion: 2
-        x: 13
-        y: 232
-        width: 162
-        height: 212
+        x: 0
+        y: 226
+        width: 190
+        height: 218
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -412,12 +412,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_13
       rect:
         serializedVersion: 2
-        x: 588
+        x: 578
         y: 0
-        width: 162
-        height: 212
+        width: 183
+        height: 217
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,9 +437,9 @@ TextureImporter:
         x: 762
         y: 0
         width: 180
-        height: 217
+        height: 216
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_15
       rect:
         serializedVersion: 2
-        x: 393
+        x: 386
         y: 0
-        width: 180
+        width: 187
         height: 217
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -480,10 +480,10 @@ TextureImporter:
         serializedVersion: 2
         x: 191
         y: 0
-        width: 180
-        height: 217
+        width: 192
+        height: 222
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -500,12 +500,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_17
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 180
-        height: 217
+        width: 191
+        height: 223
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -522,12 +522,12 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0006-3e3f72a4_18
       rect:
         serializedVersion: 2
-        x: 572
+        x: 569
         y: 224
-        width: 180
-        height: 217
+        width: 195
+        height: 222
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -545,11 +545,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 766
-        y: 226
+        y: 230
         width: 180
-        height: 217
+        height: 213
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

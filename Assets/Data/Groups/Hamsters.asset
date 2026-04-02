@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de6f5bdbb1abe745830e2e9d065ca1f, type: 3}
+  m_Name: Hamsters
+  m_EditorClassIdentifier: 
+  groupName: Hamsters
+  sprites:
+  - {fileID: -1958270774, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: -1497963449, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: -1805607660, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: 277490782, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}

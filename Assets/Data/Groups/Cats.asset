@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de6f5bdbb1abe745830e2e9d065ca1f, type: 3}
-  m_Name: NewGroupData
+  m_Name: Cats
   m_EditorClassIdentifier: 
-  groupName: 
-  sprites: []
+  groupName: Cats
+  sprites:
+  - {fileID: 962123826, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: 1178170958, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: -408240219, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
+  - {fileID: -385076769, guid: b1b9881418adad34f994b2ef5a9553f0, type: 3}
   accentColor: {r: 1, g: 1, b: 1, a: 1}

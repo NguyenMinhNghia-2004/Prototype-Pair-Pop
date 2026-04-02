@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   columnCount: 4
-  rowCount: 5
+  rowCount: 4
   totalGroupCount: 5
-  activeGroupCount: 5
+  activeGroupCount: 4
   timeLimit: 600
-  spawnRules: []
+  spawnRules:
+  - afterDoneCount: 1
+    spawnGroupCount: 1
   possibleGroups:
-  - {fileID: 11400000, guid: 6a2274699fce37d40817efe34a9b190b, type: 2}
-  - {fileID: 11400000, guid: 02d28accfb0d0c84f9f772aa6fd614c8, type: 2}
-  - {fileID: 11400000, guid: c5f3e7d99a703c647b66426abcb68529, type: 2}
-  - {fileID: 11400000, guid: cadc35a29592f784293d82c48d7fd219, type: 2}
-  - {fileID: 11400000, guid: b33dc9a68f63386438dcca83405e561a, type: 2}
-  - {fileID: 11400000, guid: 31629df5a78178b459267116ef693330, type: 2}
-  - {fileID: 11400000, guid: 3c95da08f44c04e4b82088d2830af222, type: 2}
+  - {fileID: 11400000, guid: 97ba2612af823c246b01b228070337e8, type: 2}
+  - {fileID: 11400000, guid: 1b639f5eac8fa31499f96ec73de53ab6, type: 2}
+  - {fileID: 11400000, guid: b37e013ac5ee6e2468e80ab5f78e2e78, type: 2}
+  - {fileID: 11400000, guid: 339f010dde10c204ab0383082eb4e330, type: 2}
+  - {fileID: 11400000, guid: 4c4325fd18fff4b4e99c7d5480b1ad6d, type: 2}

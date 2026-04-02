@@ -4,6 +4,7 @@ using System;
 using UnityEngine.SceneManagement;
 using PairPop.UI;
 using System.Collections;
+using PairPop.Skills;
 
 namespace PairPop.Core {
     public class GameManager : MonoBehaviour {
@@ -21,6 +22,7 @@ namespace PairPop.Core {
         
         [Header("State")]
         public bool isPlaying;
+        public bool isFrozen;  // Skill Frozen: tạm dừng trừ thời gian
         public float currentTime;
         public int score;
         public float comboMultiplier = 1f;
@@ -58,6 +60,7 @@ namespace PairPop.Core {
             currentComboCount = 0;
             doneCount = 0;
             isPlaying = true;
+            isFrozen = false;
 
             // Truyền event cho các UI lắng nghe
             OnScoreChanged?.Invoke(score);
@@ -70,7 +73,7 @@ namespace PairPop.Core {
             if (!isPlaying) return;
 
             // Xử lý Time limit
-            if (currentLevel != null && currentLevel.timeLimit > 0) {
+            if (currentLevel != null && currentLevel.timeLimit > 0 && !isFrozen) {
                 currentTime -= Time.deltaTime;
                 OnTimeChanged?.Invoke(currentTime);
                 if (currentTime <= 0) {
@@ -105,7 +108,7 @@ namespace PairPop.Core {
         IEnumerator WinGame() {
             isPlaying = false;
             Debug.Log("LEVEL COMPLETE!");
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(1f);
             // Xử lý bật effect particles
             if (winParticles != null) {
                 foreach (var p in winParticles) {
@@ -114,8 +117,9 @@ namespace PairPop.Core {
             }
 
             if (UIManager.Instance != null) {
-                yield return new WaitForSeconds(1.8f);
+                yield return new WaitForSeconds(2f);
                 UIManager.Instance.ShowWinPanel();
+                
                 foreach (var p in winParticles) {
                     if (p != null) p.Stop();
                 }

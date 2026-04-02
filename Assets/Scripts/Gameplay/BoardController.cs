@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using PairPop.Skills;
+using PairPop.UI;
 
 namespace PairPop.Gameplay {
 
@@ -51,6 +53,17 @@ namespace PairPop.Gameplay {
         private Coroutine hideGhostRoutine;
         private int doneRowCount = 0; // Số hàng đã done, dùng để xếp lên trên cùng
 
+        // === Hint Booster: reserved color cho group ===
+        private Dictionary<GroupDataSO, DoneColorSet> reservedColors = new Dictionary<GroupDataSO, DoneColorSet>();
+        private int doneColorIndex = 0; // Index riêng để track done color, chỉ tăng khi dùng color set mới (ko trùng reserve)
+
+        /// <summary> Số hàng đã done - dùng cho skill tính toán </summary>
+        public int DoneRowCount => doneRowCount;
+
+        [Header("Skill Buttons")]
+        [Tooltip("Danh sách các SkillButtonUI để gọi TryUnlock khi bắt đầu level")]
+        public SkillButtonUI[] skillButtons;
+
         private void Start() {
             GameManager.Instance.StartLevel(GameManager.Instance.currentLevel);
             StartBoard(GameManager.Instance.currentLevel);
@@ -61,7 +74,9 @@ namespace PairPop.Gameplay {
             allCards.Clear();
             doneBoxes.Clear();
             spawnPool.Clear();
+            reservedColors.Clear();
             doneRowCount = 0;
+            doneColorIndex = 0;
 
             var groups = level.possibleGroups.ToList();
             for (int i = 0; i < level.totalGroupCount; i++) {
@@ -69,6 +84,40 @@ namespace PairPop.Gameplay {
             }
 
             SpawnRows(0, level.activeGroupCount);
+
+            // Chờ chia bài xong rồi mới check unlock skill → hiện intro panel
+            float spawnAnimDuration = CalculateSpawnAnimDuration(level.activeGroupCount);
+            StartCoroutine(TryUnlockSkillsDelayed(spawnAnimDuration));
+        }
+
+        /// <summary>
+        /// Tính thời gian animation chia bài dựa trên số group
+        /// </summary>
+        private float CalculateSpawnAnimDuration(int groupCount) {
+            // Card cuối cùng có delay = (groupCount-1)*0.15 + 3*0.05 + animation 0.4
+            // Thêm buffer 0.3s 
+            return (groupCount - 1) * 0.15f + 3 * 0.05f + 0.4f + 0.3f;
+        }
+
+        /// <summary>
+        /// Chờ chia bài xong → kiểm tra unlock skill
+        /// </summary>
+        private IEnumerator TryUnlockSkillsDelayed(float delay) {
+            yield return new WaitForSeconds(delay);
+            TryUnlockSkills();
+        }
+
+        /// <summary>
+        /// Kiểm tra và unlock các skill theo level hiện tại
+        /// </summary>
+        private void TryUnlockSkills() {
+            if (skillButtons == null) return;
+            int currentLevelIdx = GameManager.currentLevelIndex + 1; // 1-based level
+            foreach (var btn in skillButtons) {
+                if (btn != null) {
+                    btn.TryUnlock(currentLevelIdx);
+                }
+            }
         }
 
         private void SpawnRows(int startRowIdx, int rowCount) {
@@ -265,10 +314,13 @@ namespace PairPop.Gameplay {
             }
         }
 
+        // Chống double sound: ghi lại thời điểm phát "Match" cuối cùng
+        private float lastMatchSoundTime = -1f;
+
         private IEnumerator CheckRowDoneRoutine(int row) {
             yield return new WaitForSeconds(0.25f);
             
-            var rowCards = allCards.Where(c => c.model.row == row).ToList();
+            var rowCards = allCards.Where(c => c.model.row == row && !c.model.isDone).ToList();
             if (rowCards.Count != 4) yield break;
 
             string gName = rowCards[0].model.group.groupName;
@@ -283,8 +335,16 @@ namespace PairPop.Gameplay {
                 yield return new WaitForSeconds(0.05f);
                 HapticManager.Instance?.Play(HapticType.Medium);
                 
-                // === Bước 1: Lấy bộ màu theo thứ tự done ===
-                DoneColorSet colorSet = GetDoneColorSet(doneRowCount);
+                // === Bước 1: Lấy bộ màu - ưu tiên reserved color (từ Hint Booster) ===
+                // GetNextDoneColorSet() tự động tăng index → 2 đôi done cùng lúc sẽ nhận 2 màu khác nhau
+                // Nếu hết palette thì modulo quay vòng lại từ đầu
+                DoneColorSet colorSet;
+                if (reservedColors.TryGetValue(doneGroup, out DoneColorSet reserved)) {
+                    colorSet = reserved;
+                    reservedColors.Remove(doneGroup);
+                } else {
+                    colorSet = GetNextDoneColorSet();
+                }
 
                 // === Bước 1b: Đổi background color cho từng card ===
                 Sequence seq = DOTween.Sequence();
@@ -329,7 +389,13 @@ namespace PairPop.Gameplay {
                     allCards.Remove(card);
                     Destroy(card.gameObject);
                 }
-                AudioManager.Instance.PlaySFX("Match");
+
+                // === FIX: Chỉ phát "Match" sound 1 lần nếu 2 đôi done cùng lúc ===
+                if (Time.time - lastMatchSoundTime > 0.5f) {
+                    AudioManager.Instance.PlaySFX("Match");
+                    lastMatchSoundTime = Time.time;
+                }
+                
                 // === Bước 5: Spawn DoneBox prefab ===
                 if (doneBoxPrefab != null) {
                     DoneBoxController doneBox = Instantiate(doneBoxPrefab, this.transform);
@@ -441,14 +507,38 @@ namespace PairPop.Gameplay {
         }
 
         /// <summary>
-        /// Lấy bộ màu theo thứ tự done. Nếu vượt số lượng palette thì lặp lại.
+        /// Lấy bộ màu theo index. Nếu vượt số lượng palette thì lặp lại từ đầu.
+        /// Public để skill có thể truy cập.
         /// </summary>
-        private DoneColorSet GetDoneColorSet(int doneIndex) {
+        public DoneColorSet GetDoneColorSet(int doneIndex) {
             if (doneColorSets == null || doneColorSets.Length == 0) {
-                // Fallback mặc định nếu chưa gán
                 return new DoneColorSet();
             }
             return doneColorSets[doneIndex % doneColorSets.Length];
+        }
+
+        /// <summary>
+        /// Lấy bộ màu tiếp theo theo thứ tự, tự động cycling khi hết palette.
+        /// </summary>
+        private DoneColorSet GetNextDoneColorSet() {
+            if (doneColorSets == null || doneColorSets.Length == 0) {
+                return new DoneColorSet();
+            }
+            DoneColorSet set = doneColorSets[doneColorIndex % doneColorSets.Length];
+            doneColorIndex++;
+            return set;
+        }
+
+        /// <summary>
+        /// Hint Booster: đặt trước bộ done color cho một group cụ thể.
+        /// Khi group đó done, sẽ dùng đúng bộ color này thay vì lấy theo thứ tự.
+        /// </summary>
+        public void ReserveColorForGroup(GroupDataSO group, DoneColorSet colorSet, int usedIndex) {
+            reservedColors[group] = colorSet;
+            // Tăng doneColorIndex để tránh trùng với lần done tiếp theo
+            if (usedIndex >= doneColorIndex) {
+                doneColorIndex = usedIndex + 1;
+            }
         }
     }
 }

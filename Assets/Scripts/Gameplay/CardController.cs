@@ -142,5 +142,15 @@ namespace PairPop.Gameplay {
                 backgroundRenderer.sprite = doneSprite;
             }
         }
+
+        /// <summary>
+        /// Đổi sprite background khi Hint Booster gợi ý (card vẫn active, chưa done).
+        /// Dùng sprite done color để gợi ý cho người chơi biết 2 card cùng group.
+        /// </summary>
+        public void SetHintDoneBackground(Sprite hintSprite) {
+            if (hintSprite != null) {
+                backgroundRenderer.sprite = hintSprite;
+            }
+        }
     }
 }

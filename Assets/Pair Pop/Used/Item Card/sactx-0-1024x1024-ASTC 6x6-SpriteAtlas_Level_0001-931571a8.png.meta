@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 473
-        width: 165
-        height: 235
+        y: 470
+        width: 166
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,10 +148,10 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 248
-        width: 184
-        height: 215
+        x: 0
+        y: 243
+        width: 191
+        height: 221
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,10 +170,10 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 232
-        width: 175
-        height: 235
+        x: 205
+        y: 229
+        width: 150
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_3
       rect:
         serializedVersion: 2
-        x: 382
-        y: 241
-        width: 175
-        height: 235
+        x: 384
+        y: 240
+        width: 166
+        height: 237
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,9 +215,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 732
-        y: 220
+        y: 217
         width: 175
-        height: 235
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,9 +237,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 194
-        y: 470
+        y: 469
         width: 184
-        height: 215
+        height: 255
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,9 +259,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 378
-        y: 478
+        y: 477
         width: 184
-        height: 215
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,9 +280,9 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_7
       rect:
         serializedVersion: 2
-        x: 563
+        x: 559
         y: 0
-        width: 184
+        width: 192
         height: 215
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -303,9 +303,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 558
-        y: 230
+        y: 217
         width: 175
-        height: 225
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,8 +326,8 @@ TextureImporter:
         serializedVersion: 2
         x: 383
         y: 0
-        width: 175
-        height: 235
+        width: 176
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,10 +346,10 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_12
       rect:
         serializedVersion: 2
-        x: 197
-        y: 1
-        width: 175
-        height: 225
+        x: 193
+        y: 0
+        width: 188
+        height: 228
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,10 +368,10 @@ TextureImporter:
       name: sactx-0-1024x1024-ASTC 6x6-SpriteAtlas_Level_0001-931571a8_13
       rect:
         serializedVersion: 2
-        x: 5
-        y: 17
-        width: 175
-        height: 225
+        x: 0
+        y: 0
+        width: 190
+        height: 242
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
