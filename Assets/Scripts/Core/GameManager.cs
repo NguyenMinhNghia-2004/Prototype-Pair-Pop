@@ -117,7 +117,7 @@ namespace PairPop.Core {
             }
 
             if (UIManager.Instance != null) {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1.8f);
                 UIManager.Instance.ShowWinPanel();
                 
                 foreach (var p in winParticles) {

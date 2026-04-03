@@ -8,5 +8,7 @@ namespace PairPop.Data {
         public Sprite[] sprites;
         [Tooltip("Màu viền khi cả hàng được ghép (done)")]
         public Color accentColor = Color.white;
+        [Tooltip("Sprite mặt sau của lá bài (card back)")]
+        public Sprite cardBackSprite;
     }
 }

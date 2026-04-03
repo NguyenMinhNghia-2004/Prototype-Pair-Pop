@@ -26,6 +26,7 @@ namespace PairPop.Gameplay {
         // Reference tới Board
         private BoardController board;
         private Tween wobbleTween;
+        private Tween returnTween; // Track tween trở về vị trí cũ
 
         private void Awake() {
             rectTransform = GetComponent<RectTransform>();
@@ -40,14 +41,29 @@ namespace PairPop.Gameplay {
             if (dashedLineObj != null) {
                 dashedLineObj.SetActive(false);
             }
+            
+            // Mặc định hiện mặt trước
+            ShowFront();
         }
 
         public void OnPointerDown(PointerEventData eventData) {
             if (model.isDone || !GameManager.Instance.isPlaying) return;
             if (!board.IsRowInteractable(model.row)) return;
+            
+            // === FIX Bug 1: Block tương tác khi board đang animate ===
+            if (board.IsAnimating) return;
+            
             AudioManager.Instance.PlaySFX("Select");
             isDragging = true;
-            originalAnchoredPos = rectTransform.anchoredPosition;
+            
+            // === FIX Bug 2: Kill tween cũ nếu đang animate trở về ===
+            returnTween?.Kill();
+            
+            // === FIX Bug 2: Luôn tính vị trí gốc từ grid, không dùng anchoredPosition hiện tại ===
+            originalAnchoredPos = board.GetCellPosition(model.row, model.col);
+            
+            // Snap card về đúng vị trí grid trước khi bắt đầu kéo (phòng trường hợp đang giữa animation)
+            rectTransform.anchoredPosition = originalAnchoredPos;
             
             // Calculate pointer offset in local anchored position
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -107,7 +123,8 @@ namespace PairPop.Gameplay {
                 board.SwapCards(this, targetCard);
                 HapticManager.Instance?.Play(HapticType.Medium);
             } else {
-                rectTransform.DOAnchorPos(originalAnchoredPos, 0.25f).SetEase(Ease.OutBack);
+                // === FIX Bug 2: Track return tween để có thể kill nếu click lại nhanh ===
+                returnTween = rectTransform.DOAnchorPos(originalAnchoredPos, 0.25f).SetEase(Ease.OutBack);
                 transform.DOScale(0.7f, 0.15f);
                 HapticManager.Instance?.Play(HapticType.Medium);
                 GameManager.Instance.ResetCombo();
@@ -151,6 +168,69 @@ namespace PairPop.Gameplay {
             if (hintSprite != null) {
                 backgroundRenderer.sprite = hintSprite;
             }
+        }
+
+        /// <summary>
+        /// Hiện mặt trước card (item + background), ẩn cardBack
+        /// </summary>
+        public void ShowFront() {
+            if (itemRenderer != null) itemRenderer.gameObject.SetActive(true);
+            if (cardBackObj != null) cardBackObj.SetActive(false);
+        }
+
+        /// <summary>
+        /// Hiện mặt sau card (cardBack), ẩn item
+        /// </summary>
+        public void ShowBack() {
+            if (itemRenderer != null) itemRenderer.gameObject.SetActive(false);
+            if (cardBackObj != null) cardBackObj.SetActive(true);
+        }
+
+        /// <summary>
+        /// Set sprite cho cardBack (mặt sau)
+        /// </summary>
+        public void SetCardBackSprite(Sprite backSprite) {
+            if (cardBackObj != null && backSprite != null) {
+                var img = cardBackObj.GetComponent<Image>();
+                if (img != null) img.sprite = backSprite;
+            }
+        }
+
+        /// <summary>
+        /// Animation lật card: mặt trước → mặt sau
+        /// Scale X: 1 → 0 (ẩn mặt trước) → 0 → 1 (hiện mặt sau)
+        /// </summary>
+        public Tween FlipToBack(float duration = 0.3f) {
+            Sequence flipSeq = DOTween.Sequence();
+            flipSeq.Append(transform.DOScaleX(0f, duration * 0.5f).SetEase(Ease.InSine));
+            flipSeq.AppendCallback(() => {
+                ShowBack();
+            });
+            flipSeq.Append(transform.DOScaleX(transform.localScale.x > 0 ? 0.7f : 1f, duration * 0.5f).SetEase(Ease.OutSine));
+            return flipSeq;
+        }
+
+        /// <summary>
+        /// Animation lật card: mặt sau → mặt trước
+        /// </summary>
+        public Tween FlipToFront(float duration = 0.3f) {
+            Sequence flipSeq = DOTween.Sequence();
+            flipSeq.Append(transform.DOScaleX(0f, duration * 0.5f).SetEase(Ease.InSine));
+            flipSeq.AppendCallback(() => {
+                ShowFront();
+            });
+            flipSeq.Append(transform.DOScaleX(transform.localScale.x > 0 ? 0.7f : 1f, duration * 0.5f).SetEase(Ease.OutSine));
+            return flipSeq;
+        }
+
+        /// <summary>
+        /// Kill all running tweens related to this card.
+        /// </summary>
+        public void KillAllTweens() {
+            returnTween?.Kill();
+            wobbleTween?.Kill();
+            rectTransform.DOKill();
+            transform.DOKill();
         }
     }
 }

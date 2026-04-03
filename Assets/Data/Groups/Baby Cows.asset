@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: -1704410528, guid: 3ea70be0edcf31046865ea09b6caa4d2, type: 3}
   - {fileID: 1377548906, guid: 3ea70be0edcf31046865ea09b6caa4d2, type: 3}
   accentColor: {r: 1, g: 1, b: 1, a: 1}
+  cardBackSprite: {fileID: 0}

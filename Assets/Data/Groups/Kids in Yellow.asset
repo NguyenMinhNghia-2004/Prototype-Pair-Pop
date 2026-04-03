@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 1932221994, guid: b3002782011cadc4da27984dc781e603, type: 3}
   - {fileID: 289830405, guid: b3002782011cadc4da27984dc781e603, type: 3}
   - {fileID: 2088645017, guid: b3002782011cadc4da27984dc781e603, type: 3}
-  accentColor: {r: 0.34140196, g: 1, b: 0.33773577, a: 1}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}
+  cardBackSprite: {fileID: 0}
