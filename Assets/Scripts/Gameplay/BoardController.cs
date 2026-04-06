@@ -104,8 +104,8 @@ namespace PairPop.Gameplay {
             int initialCardCount = level.activeGroupCount * 4;
             SpawnCardsFromPool(initialCardCount);
 
-            // Chờ chia bài xong rồi mới check unlock skill → hiện intro panel
-            float spawnAnimDuration = CalculateSpawnAnimDuration(level.activeGroupCount);
+            // Chờ chia bài xong rồi mới check unlock skill → hiện intro panel (xuất hiện sớm hơn một chút)
+            float spawnAnimDuration = Mathf.Max(0f, CalculateSpawnAnimDuration(level.activeGroupCount) - 0.5f);
             StartCoroutine(TryUnlockSkillsDelayed(spawnAnimDuration));
         }
 
@@ -663,6 +663,7 @@ namespace PairPop.Gameplay {
                     lastMatchSoundTime = Time.time;
                 }
                 
+
                 // === Bước 5: Spawn DoneBox prefab ===
                 DoneBoxController spawnedDoneBox = null;
                 if (doneBoxPrefab != null) {
@@ -677,7 +678,7 @@ namespace PairPop.Gameplay {
 
                     // Đặt done box ở đúng vị trí sibling (trước các card chưa done)
                     doneBox.transform.SetSiblingIndex(targetDoneRow);
-
+                    HapticManager.Instance.Play(HapticType.Light);
                     if (doneParticlePrefab != null) {
                         GameObject particle = Instantiate(doneParticlePrefab, this.transform);
                         RectTransform particleRT = particle.GetComponent<RectTransform>();
@@ -686,7 +687,7 @@ namespace PairPop.Gameplay {
                         } else {
                             particle.transform.position = doneBox.transform.position;
                         }
-                        Destroy(particle, 5f);
+                        Destroy(particle, 4f);
                     }
                 }
 
@@ -822,7 +823,7 @@ namespace PairPop.Gameplay {
                 fakeCard.transform.DOScale(0.7f, 0.3f).SetEase(Ease.OutBack).SetDelay(i * 0.05f);
                 rt.DOAnchorPos(cellPos, 0.4f).SetEase(Ease.OutBack).SetDelay(i * 0.05f);
             }
-
+            HapticManager.Instance.Play(HapticType.Light);
             yield return new WaitForSeconds(0.2f); // Chờ bay ra xong
 
             // === Bước 3: Gom xếp bài lại vào phía lá bài ngoài cùng bên phải của hàng đó ===

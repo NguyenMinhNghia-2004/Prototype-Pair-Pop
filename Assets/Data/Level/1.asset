@@ -16,9 +16,10 @@ MonoBehaviour:
   rowCount: 3
   totalGroupCount: 3
   activeGroupCount: 3
-  timeLimit: 540
+  timeLimit: 180
+  defaultSpawnCardCount: 4
   spawnRules: []
   possibleGroups:
-  - {fileID: 11400000, guid: 05eefc4a3e208b74a997b26efa37ecbb, type: 2}
-  - {fileID: 11400000, guid: f0623e92fa069f746a321743af91adf6, type: 2}
-  - {fileID: 11400000, guid: 55c5964b2a1dcfc4ba63df163d3edce3, type: 2}
+  - {fileID: 11400000, guid: 02d28accfb0d0c84f9f772aa6fd614c8, type: 2}
+  - {fileID: 11400000, guid: c5f3e7d99a703c647b66426abcb68529, type: 2}
+  - {fileID: 11400000, guid: 6a2274699fce37d40817efe34a9b190b, type: 2}

@@ -152,10 +152,6 @@ namespace PairPop.UI {
             if (skillAsset.IsUnlocked) return;
             if (currentLevelIndex < skillAsset.UnlockLevel) return;
             
-            // Unlock skill: cộng 1 lượt mặc định
-            skillAsset.IsUnlocked = true;
-            skillAsset.AddUsage(1);
-            
             ShowIntroPanel();
         }
 
@@ -212,6 +208,11 @@ namespace PairPop.UI {
         /// Hiển thị panel tutorial - skill button nổi lên trên panel và nhấp nháy
         /// </summary>
         private void ShowTutorialPanel() {
+            // Unlock skill khi bắt đầu tutorial thay vì intro
+            skillAsset.IsUnlocked = true;
+            skillAsset.AddUsage(1);
+            UpdateUI(); // Cập nhật để xoá icon khoá, hiện điểm
+
             if (tutorialPanel == null) {
                 // Không có tutorial → unpause luôn
                 if (GameManager.Instance != null) {
@@ -245,16 +246,19 @@ namespace PairPop.UI {
             }
         }
 
-        /// <summary>
-        /// Đưa skill button lên trên cùng trong hierarchy để không bị tutorial panel che
-        /// </summary>
         private void BringButtonToFront() {
             // Lưu vị trí gốc trước khi di chuyển
             originalSiblingIndex = transform.GetSiblingIndex();
             originalParent = transform.parent;
             
-            // Đưa lên cuối hierarchy (render trên cùng)
-            transform.SetAsLastSibling();
+            if (tutorialSkillBtnAnchor != null) {
+                // Đưa skill button vào anchor trên tutorial panel để nổi lên
+                transform.SetParent(tutorialSkillBtnAnchor, false);
+                transform.localPosition = Vector3.zero;
+            } else {
+                // Đưa lên cuối hierarchy (render trên cùng)
+                transform.SetAsLastSibling();
+            }
         }
 
         /// <summary>
@@ -262,6 +266,7 @@ namespace PairPop.UI {
         /// </summary>
         private void RestoreButtonPosition() {
             if (originalParent != null) {
+                transform.SetParent(originalParent, false);
                 transform.SetSiblingIndex(Mathf.Min(originalSiblingIndex, originalParent.childCount - 1));
             }
         }

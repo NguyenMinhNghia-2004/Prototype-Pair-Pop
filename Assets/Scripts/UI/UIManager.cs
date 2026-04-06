@@ -154,10 +154,23 @@ namespace PairPop.UI {
 
         public void ToggleSettingsPanel() {
             if (settingsPanel != null) {
-                bool isActive = !settingsPanel.activeSelf;
-                settingsPanel.SetActive(isActive);
-                if (isActive) {
+                bool isCurrentlyActive = settingsPanel.activeSelf;
+                
+                settingsPanel.transform.DOKill(); // Ngắt animation cũ đang chạy (nếu có)
+
+                if (!isCurrentlyActive) {
+                    // Mở panel
+                    settingsPanel.SetActive(true);
                     UpdateSettingsUI();
+                    
+                    settingsPanel.transform.localScale = Vector3.zero;
+                    settingsPanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetUpdate(true);
+                } else {
+                    // Đóng panel
+                    settingsPanel.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).SetUpdate(true)
+                        .OnComplete(() => {
+                            settingsPanel.SetActive(false);
+                        });
                 }
             }
         }

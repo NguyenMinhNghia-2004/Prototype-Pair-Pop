@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c407a4d5eb8be9848b6998c7ba8b3dd6, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  columnCount: 4
+  rowCount: 5
+  totalGroupCount: 5
+  activeGroupCount: 5
+  timeLimit: 120
+  defaultSpawnCardCount: 4
+  spawnRules: []
+  possibleGroups:
+  - {fileID: 11400000, guid: 97ba2612af823c246b01b228070337e8, type: 2}
+  - {fileID: 11400000, guid: 339f010dde10c204ab0383082eb4e330, type: 2}
+  - {fileID: 11400000, guid: 1b639f5eac8fa31499f96ec73de53ab6, type: 2}
+  - {fileID: 11400000, guid: b37e013ac5ee6e2468e80ab5f78e2e78, type: 2}
+  - {fileID: 11400000, guid: 4c4325fd18fff4b4e99c7d5480b1ad6d, type: 2}

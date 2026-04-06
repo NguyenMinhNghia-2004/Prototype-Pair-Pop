@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de6f5bdbb1abe745830e2e9d065ca1f, type: 3}
+  m_Name: Cactuses
+  m_EditorClassIdentifier: 
+  groupName: Cactuses
+  sprites:
+  - {fileID: 1396667126, guid: 6cf85cb96df02334489aa8581e9ec79c, type: 3}
+  - {fileID: -1184824438, guid: 6cf85cb96df02334489aa8581e9ec79c, type: 3}
+  - {fileID: -1562521707, guid: 6cf85cb96df02334489aa8581e9ec79c, type: 3}
+  - {fileID: 210624596, guid: 6cf85cb96df02334489aa8581e9ec79c, type: 3}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}
+  cardBackSprite: {fileID: 21300000, guid: a2493c598a190214488ce9fab9551338, type: 3}

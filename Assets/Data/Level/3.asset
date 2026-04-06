@@ -13,22 +13,14 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   columnCount: 4
-  rowCount: 6
-  totalGroupCount: 8
-  activeGroupCount: 6
+  rowCount: 4
+  totalGroupCount: 4
+  activeGroupCount: 4
   timeLimit: 600
   defaultSpawnCardCount: 4
-  spawnRules:
-  - afterDoneCount: 1
-    spawnCardCount: 4
-  - afterDoneCount: 3
-    spawnCardCount: 4
+  spawnRules: []
   possibleGroups:
-  - {fileID: 11400000, guid: 97ba2612af823c246b01b228070337e8, type: 2}
-  - {fileID: 11400000, guid: 1b639f5eac8fa31499f96ec73de53ab6, type: 2}
-  - {fileID: 11400000, guid: b37e013ac5ee6e2468e80ab5f78e2e78, type: 2}
-  - {fileID: 11400000, guid: 339f010dde10c204ab0383082eb4e330, type: 2}
   - {fileID: 11400000, guid: 05eefc4a3e208b74a997b26efa37ecbb, type: 2}
-  - {fileID: 11400000, guid: 4c4325fd18fff4b4e99c7d5480b1ad6d, type: 2}
+  - {fileID: 11400000, guid: f0623e92fa069f746a321743af91adf6, type: 2}
   - {fileID: 11400000, guid: 067c38049ddc01141b806a6df8b1059d, type: 2}
-  - {fileID: 11400000, guid: 6a2274699fce37d40817efe34a9b190b, type: 2}
+  - {fileID: 11400000, guid: 55c5964b2a1dcfc4ba63df163d3edce3, type: 2}

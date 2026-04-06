@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c407a4d5eb8be9848b6998c7ba8b3dd6, type: 3}
+  m_Name: 14
+  m_EditorClassIdentifier: 
+  columnCount: 4
+  rowCount: 6
+  totalGroupCount: 9
+  activeGroupCount: 6
+  timeLimit: 180
+  defaultSpawnCardCount: 4
+  spawnRules:
+  - afterDoneCount: 1
+    spawnCardCount: 4
+  - afterDoneCount: 2
+    spawnCardCount: 4
+  - afterDoneCount: 3
+    spawnCardCount: 4
+  possibleGroups:
+  - {fileID: 11400000, guid: 55c5964b2a1dcfc4ba63df163d3edce3, type: 2}
+  - {fileID: 11400000, guid: f0623e92fa069f746a321743af91adf6, type: 2}
+  - {fileID: 11400000, guid: 067c38049ddc01141b806a6df8b1059d, type: 2}
+  - {fileID: 11400000, guid: 72e5f386165d53a428570c28c2ac7c64, type: 2}
+  - {fileID: 11400000, guid: 5bff2e50732fc184dbd478ed0831b910, type: 2}
+  - {fileID: 11400000, guid: ee4eaf7291050604f8a6333236415d35, type: 2}
+  - {fileID: 11400000, guid: 45547df062e910c4cb046ea90db0f311, type: 2}
+  - {fileID: 11400000, guid: 20a39b8e590368747936fb9d4bf2ae55, type: 2}
